@@ -2,6 +2,8 @@
 
 Typst template for CV
 
+![](https://github.com/GuilloteauQ/qcv/blob/main/example.png)
+
 ## Example
 
 ```typst
@@ -26,4 +28,4 @@ Typst template for CV
 #entry(2020, 2023, title:"Phd Student", details: lorem(30))
 ```
 
-See the output [here](https://github.com/GuilloteauQ/qcv/blob/main/main.pdf)
+See the PDF output [here](https://github.com/GuilloteauQ/qcv/blob/main/main.pdf)
