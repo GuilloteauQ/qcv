@@ -53,9 +53,20 @@
 ) = {
   let year_size = 100% * (year_end - year_start) / (max_year - min_year)
   let start_percentage =  100% * ((year_start - min_year) / (max_year - min_year))
-  let years_text = if year_start == year_end {text(qcv_size_years)[#year_start] } else {text(qcv_size_years)[#year_start - #year_end]}
+  let years_text = if year_start == year_end or year_end == max_year {
+    text(qcv_size_years)[#year_start]
+  } else {
+    text(qcv_size_years)[#year_start - #year_end]
+  }
 
-  let rect_or_circle = if year_start == year_end {circle(radius: 2pt, fill: qcv_color)} else {rect(width: year_size, height: 4pt, fill: qcv_color)}
+  let rect_or_circle = if year_start == year_end {
+    circle(radius: 2pt, fill: qcv_color)
+  } else if year_end == max_year {
+    rect(width: year_size, height: 4pt, fill: gradient.linear(qcv_color, white))
+  } else {
+    rect(width: year_size, height: 4pt, fill: qcv_color)
+  }
+
   let align_top_of_rect(body) = context {
     let size = measure(body)
     move(dx: start_percentage + (year_size - size.width) / 2 + if year_start == year_end { 2pt } else {0pt}, dy: -1.5pt, body)
